@@ -10,6 +10,7 @@ def home(request):
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
+    paginate_by = 6
     
 class ArticleDetailView(DetailView):
     model = Post
