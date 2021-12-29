@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Blog Categories{% endblock %}
+{% block content %}
+
+<h1>Blog Categories</h1>
+<br><br>
+{% for item in cat_menu_list %}
+<div class="col-md-4">
+    <div class="card mb-4" >
+        <div class="card-body" id="card-body">
+    <a  href="{% url 'category' item %}">{{ item }}</a>
+</div>
+    </div>
+        </div>
+{% endfor %}
+
+{% endblock %}

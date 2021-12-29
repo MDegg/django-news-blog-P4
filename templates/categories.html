@@ -75,12 +75,15 @@
    </nav>
    {% endif %}
 </div>       
-
-
+<div class="card mb-12">
+    <div class="card-body">
+        <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
+    </div>
+</div>
   
 
 {% else %}
-    <h2>Sorry This Category Does not Exist!</h2>
+    <h2>Sorry There Aren't Any Posts Under This Category Yet!!!!</h2>
     <br>
     <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
 {% endif %}

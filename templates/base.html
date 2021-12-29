@@ -41,6 +41,25 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>
               </li>
+              {% if cat_menu %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                  <!--Category Menu Code-->
+                  {% for item in cat_menu %}
+                  <li><a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'category-list' %}">Category List</a>
+              </li>
+              
+              {% endif %}
               {% else %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'register' %}">Register</a>
@@ -48,6 +67,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
               </li>
+              
               {% endif %}
 
 
