@@ -1,7 +1,7 @@
 from django.db import models
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Category
 from datetime import datetime, date
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
@@ -25,11 +25,17 @@ class AddPostView(CreateView):
     template_name = 'add_post.html'
     #fields = '__all__'
 
+class AddCategoryView(CreateView):
+    model = Category
+    #form_class = PostForm
+    template_name = 'add_category.html'
+    fields = '__all__'
+
 class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
-    template_name = 'update_post.html'
-    #fields = ['title', 'title_tag','body']
+    template_name = 'add_category.html'
+    fields = ['title', 'title_tag','body']
 
 
 class DeletePostView(DeleteView):

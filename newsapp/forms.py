@@ -1,5 +1,14 @@
 from django import forms
-from .models import Post
+from .models import Post, Category
+
+
+#choices = [('coding','coding'),('motorcycles','motorcycles'),('sport','sport'),]
+choices = Category.objects.all().values_list('name','name')
+
+choice_list = []
+
+for item in choices:
+    choice_list.append(item)
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -10,8 +19,9 @@ class PostForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Add Blog Title Here.....'}),
             'title_tag': forms.TextInput(attrs={'class':'form-control','placeholder':'Add Blog Title Tag Here.....'}),
             'author': forms.Select(attrs={'class':'form-control'}),
+            'category': forms.Select(choices=choice_list, attrs={'class':'form-control'}),
             'body': forms.Textarea(attrs={'class':'form-control','placeholder':'Add Blog Body Here.....'}),
-            'feature_image':forms.ImageField,
+            #'feature_image':forms.ImageField,
 
         }
 

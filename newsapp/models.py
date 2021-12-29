@@ -4,14 +4,23 @@ from datetime import datetime, date
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
 
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name 
+
+    def get_absolute_url(self):
+        return reverse('home')
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     title_tag = models.CharField(max_length=255, default = "Django News")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    #feature_image = CloudinaryField('image', default='placeholder')
-    #created_on = models.DateField(auto_now_add = True)
+    feature_image = CloudinaryField('image', default='placeholder')
     body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
+    category = models.CharField(max_length=255, default="uncategorized")
     
     #created_on = models.DateField(auto_now_add = True)
 
