@@ -2,6 +2,8 @@
 {% block title %}Edit Blog Post Here...{% endblock %}
 {% block content %}
 
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
 <h1>Edit Post......</h1>
 
 <div class="form-control">
@@ -12,5 +14,10 @@
     <button class="btn btn-secondary" type="submit">Update</button>
 </form>
 </div>
+{% endif %}
+{% else %}
+<p>You are not authorised to carry out this action!!!</p>
+{% endif %}
+
 
 {% endblock %}

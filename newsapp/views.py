@@ -56,7 +56,7 @@ class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
     template_name = 'add_category.html'
-    fields = ['title', 'title_tag','body']
+    #fields = ['title', 'title_tag','body']
 
 
 class DeletePostView(DeleteView):
