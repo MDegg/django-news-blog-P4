@@ -28,10 +28,10 @@
                     <img class="card-img-top" src=" {{ post.feature_image.url }}">
                     {% endif %}
                     <div class= "row">
-                        <a id="object-title" href="{% url 'article-detail' post.pk %}" class="post-link">
-                        <h3  class="card-title">{{ post.title }}</h3>
+                        <!--<a id="object-title" href="{% url 'article-detail' post.pk %}" class="post-link">-->
+                        <h3  class="card-title card-body " id="card-body">{{ post.title }}</h3>
                         </a>
-                        <p>{{ post.body | safe }}</p>
+                        <p>{{ post.body | slice:"200" }}</p>
                         
                         <div class="image-flash">
                             <hr>

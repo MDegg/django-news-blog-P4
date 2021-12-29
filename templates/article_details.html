@@ -11,7 +11,8 @@
 
 
 <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
+{% if user.is_authenticated %}
 <button class="btn btn-secondary" type="submit"><a href="{% url 'update_post' post.pk %}"><small>Edit Post</small></a></button>
 <button class="btn btn-danger" type="submit"><a href="{% url 'delete_post' post.pk %}"><small> Delete Post</small></a></button>
-
+{% endif %}
 {% endblock %}
