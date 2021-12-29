@@ -4,6 +4,16 @@
 
 <h1>Post</h1>
 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-12" >
+                <div class="card-body" id="card-body">
+                    <p>Api To Go Here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
 <div class="container-fluid">
     <div class="row">
         {% for post in post_list %}
@@ -26,12 +36,14 @@
                         <div class="image-flash">
                             <hr>
                              <P class ="author">Author: {{ post.author }}</P> - <a href="{% url 'update_post' post.pk %}"><small>(Edit Post)</small></a>
+                             <br>
+                             <a href="{% url 'delete_post' post.pk %}"><small> - (Delete Post)</small></a>
                              <p class="card-text text-muted h6 ml-3">{{ post.created_on }}<i class="far fa-thumbs-up ml-5"></i>
                             {{ post.number_of_likes }}</p>
                         </div>
                      </div>
                 
-                <a href="{% url 'article-detail' post.pk %}" class="btn btn-primary mt-5">View Post!</a>
+                <a href="{% url 'article-detail' post.pk %}" class="btn btn-secondary mt-5">View Post!</a>
             </div>
         </div> 
     </div>
