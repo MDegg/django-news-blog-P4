@@ -38,6 +38,7 @@
                              <P class ="author">Author: {{ post.author }}</P>  
                              <p class="card-text text-muted h6 ml-3">{{ post.post_date }}</p>
                              <br>
+                             <a href="{% url 'category' post.category %}"><p class="card-text text-muted h6 ml-3">{{ post.category }}</p></a>
                              <!--<a href="{% url 'update_post' post.pk %}"><small> - (Edit Post)</small></a>
                              <a href="{% url 'delete_post' post.pk %}"><small> - (Delete Post)</small></a>-->
                              <br>
