@@ -11,6 +11,7 @@ class PostForm(forms.ModelForm):
             'title_tag': forms.TextInput(attrs={'class':'form-control','placeholder':'Add Blog Title Tag Here.....'}),
             'author': forms.Select(attrs={'class':'form-control'}),
             'body': forms.Textarea(attrs={'class':'form-control','placeholder':'Add Blog Body Here.....'}),
+            'feature_image':forms.ImageField,
 
         }
 

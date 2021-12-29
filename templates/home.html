@@ -35,11 +35,13 @@
                         
                         <div class="image-flash">
                             <hr>
-                             <P class ="author">Author: {{ post.author }}</P> - <a href="{% url 'update_post' post.pk %}"><small>(Edit Post)</small></a>
+                             <P class ="author">Author: {{ post.author }}</P>  
+                             <p class="card-text text-muted h6 ml-3">{{ post.post_date }}</p>
                              <br>
-                             <a href="{% url 'delete_post' post.pk %}"><small> - (Delete Post)</small></a>
-                             <p class="card-text text-muted h6 ml-3">{{ post.created_on }}<i class="far fa-thumbs-up ml-5"></i>
-                            {{ post.number_of_likes }}</p>
+                             <!--<a href="{% url 'update_post' post.pk %}"><small> - (Edit Post)</small></a>
+                             <a href="{% url 'delete_post' post.pk %}"><small> - (Delete Post)</small></a>-->
+                             <br>
+                             <p><i class="far fa-thumbs-up ml-5"></i>{{ post.number_of_likes }}</p>
                         </div>
                      </div>
                 

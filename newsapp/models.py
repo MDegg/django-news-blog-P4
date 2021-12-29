@@ -11,6 +11,7 @@ class Post(models.Model):
     #feature_image = CloudinaryField('image', default='placeholder')
     #created_on = models.DateField(auto_now_add = True)
     body = models.TextField()
+    post_date = models.DateField(auto_now_add=True)
     
     #created_on = models.DateField(auto_now_add = True)
 
