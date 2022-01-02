@@ -21,7 +21,7 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['class'] = 'form-control'
 
 class EditProfileForm(UserChangeForm):
-    email = forms.EmailField(widget=forms.EmailInput(attrs= {'class':'form-control', 'placeholder':'Enter email address'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs= {'class':'form-control', 'placeholder':'Enter email address to change'}))
     #first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control',}))
     #last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control',}))
     username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control',}))
