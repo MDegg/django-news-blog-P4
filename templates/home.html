@@ -2,8 +2,6 @@
 
 {% block content %}
 
-<h1>Post</h1>
-
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-12" >
@@ -17,7 +15,7 @@
 <div class="container-fluid">
     <div class="row">
         {% for post in post_list %}
-        <div class="col-md-4">
+        <div class="col-md-4" id="card-body">
         <div class="card mb-4" >
             <div class="card-body" id="card-body">
                 <div class="image-container" >
@@ -42,7 +40,7 @@
                              <!--<a href="{% url 'update_post' post.pk %}"><small> - (Edit Post)</small></a>
                              <a href="{% url 'delete_post' post.pk %}"><small> - (Delete Post)</small></a>-->
                              <br>
-                             <p><i class="far fa-thumbs-up ml-5"></i>{{ post.number_of_likes }}</p>
+                             <!--<p><i class="far fa-thumbs-up ml-5"></i>- {{ total_likes }} Likes</p>-->
                         </div>
                      </div>
                 

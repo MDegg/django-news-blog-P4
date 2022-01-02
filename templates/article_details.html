@@ -2,26 +2,41 @@
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
 
+<div class="col-md-12">
+    <div class="card mb-8" >
+        <div class="card-body" id="card-body">
+            <h1>{{ post.title }}</h1>
+            <small>By: {{ post.author }}</small></br>
+            <hr>
+            <h3> {{ post.body|safe }} </h3>
+            <br/>
+            <br/>
+            <hr>
+            <br/>
+            {% if user.is_authenticated %}
+            <form action="{% url 'like_post' post.pk %}" method = "POST">
+                {% csrf_token %}
 
-<h1>{{ post.title }}</h1>
-<small>By: {{ post.author }}</small></br>
-<hr>
-<h3> {{ post.body|safe }} </h3>
-<br/>
-<br/>
-<hr>
-<br/>
-<form action="{% url 'like_post' post.pk %}" method = "POST">
-    {% csrf_token %}
-    <button class="btn-outline-primary btn-sm" type="submit" name="post_id" value="{{ post.id }}">Like Post</button> - {{ total_likes }} Likes
-</form>
-<br/>
-<br/>
-<button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
-{% if user.is_authenticated %}
-{% if user.id == post.author.id %}
-<button class="btn btn-secondary" type="submit"><a href="{% url 'update_post' post.pk %}"><small>Edit Post</small></a></button>
-<button class="btn btn-danger" type="submit"><a href="{% url 'delete_post' post.pk %}"><small> Delete Post</small></a></button>
-{% endif %}
-{% endif %}
+                {% if liked %}
+                <button class="btn-outline-danger btn-sm" type="submit" name="post_id" value="{{ post.id }}">Unlike Post</button> 
+                {% else %}
+                <button class="btn-outline-primary btn-sm" type="submit" name="post_id" value="{{ post.id }}">Like Post</button>
+                {% endif %}
+                - {{ total_likes }} Likes
+            </form>
+            {% else %}
+            <small> You Must <b><a href="{% url 'login' %}">Login</a> </b>to Like This Post</small>
+            {% endif %}
+            <br/>
+            <br/>
+            <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
+            {% if user.is_authenticated %}
+            {% if user.id == post.author.id %}
+            <button class="btn btn-secondary" type="submit"><a href="{% url 'update_post' post.pk %}"><small>Edit Post</small></a></button>
+            <button class="btn btn-danger" type="submit"><a href="{% url 'delete_post' post.pk %}"><small> Delete Post</small></a></button>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
