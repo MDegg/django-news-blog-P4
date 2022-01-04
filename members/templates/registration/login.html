@@ -7,7 +7,21 @@
 <form method="POST">
     <br>
     {% csrf_token %}
-    {{ form.as_p }}
+    
+    
+        <div class="mb-3">
+        <label>Username</label>
+          <input type="text" class="form-control" name = "username">
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+          <input type="password" class="form-control" name="password">
+        </div>
+        <div class="mb-3 form-check">
+            <div id="emailHelp" class="form-text">Not yet registered?? Register <a href="{% url 'register' %}"><b>Here!</b></a></div>
+            
+        </div>
+      
     <button class="btn btn-secondary" type="submit">Login</button>
 </form>
 </div>

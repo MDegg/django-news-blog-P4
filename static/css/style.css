@@ -15,3 +15,17 @@ button a{
     color:rgb(16, 136, 16);
 }
 
+footer i {
+    font-size: 30px;
+    color: rgb(85, 84, 84);
+}
+
+#links {
+    font-size: 20px;
+    color: rgb(85, 84, 84);
+}
+
+#nav_link{
+    color:black;
+}
+

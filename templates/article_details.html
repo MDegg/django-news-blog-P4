@@ -8,8 +8,8 @@
             <h1>{{ post.title }}</h1>
             <small>By: {{ post.author }}</small></br>
             <hr>
-            <img class="card-img-top rounded" src=" {{ post.feature_image.url }}">
-            <h5> {{ post.body|safe }} </h5>
+            <img class="card-img-top rounded" src=" {{ post.feature_image.url }}" >
+            <h5> {{ post.body | safe }} </h5>
             
             <br/>
             <br/>
@@ -31,25 +31,53 @@
             {% endif %}
             <br/>
             <br/>
-            <div class="card mb-3">
-                <div class="row g-0">
-                  <div class="col-md-2">
-                    <img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" alt="User Profile Pic">
+            <div class="">
+                <div class="">
+                  <div class="">
+                    <!--<img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" alt="User Profile Pic">-->
                   </div>
-                  <div class="col-md-10">
+                  <div class="col-md-4">
                     <div class="card-body">
-                      <h5 class="card-title">{{ post.author }}</h5>
-                      <p class="card-text">{{ post.author.profile.bio | safe}}</p>
+                      <h5 class="card-title">Post By: {{ post.author }}</h5>
+                      <!--<p class="card-text">{{ post.author.profile.bio | safe}}</p>-->
                       <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
                     </div>
                   </div>
                 </div>
               </div>
+              <hr>
+              <hr>
+              <br/>
+              <br/>
+              
+              <h1>Comments.......</h1>
+            <br/>
+            {% if not post.comments.all %}
+              No Comments Yet....   <a href="{% url 'add_comment' post.pk %}"><b>  Add Comment Here</b></a>
+            {% else %}
             
+              {% for comment in post.comments.all %}
+              <ul>
+                <h5>
+                <li><b>{{ comment.name }}</b> -
+                {{ comment.date_added }}
+                </li>
+                </h5>
+              </ul>
+              
+              <h6>
+                {{ comment.body }}
+                <br>
+                <br>
+              </h6>
+                {% endfor %}
+            {% endif %}
             <br/>
-            <br/>
+            <br>
+            <hr>
             <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
             {% if user.is_authenticated %}
+            <button type="button" class="btn btn-primary"><a href="{% url 'add_comment' post.pk %}">Add Comment</button></a>
             {% if user.id == post.author.id %}
             <button class="btn btn-secondary" type="submit"><a href="{% url 'update_post' post.pk %}"><small>Edit Post</small></a></button>
             <button class="btn btn-danger" type="submit"><a href="{% url 'delete_post' post.pk %}"><small> Delete Post</small></a></button>
