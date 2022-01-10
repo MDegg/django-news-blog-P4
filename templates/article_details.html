@@ -8,7 +8,13 @@
             <h1>{{ post.title }}</h1>
             <small>By: {{ post.author }}</small></br>
             <hr>
-            <img class="card-img-top rounded" src=" {{ post.feature_image.url }}" >
+            {% if "placeholder" in post.feature_image.url %}
+            <img class="card-img-top" id="detail_img"
+                src="https://miro.medium.com/max/1080/1*u_24K65JdndkKbC2ZEGvNA.png">
+            {% else %}
+            <img class="card-img-top" id="detail_img" src=" {{ post.feature_image.url }}">
+            {% endif %}
+            
             <h5> {{ post.body | safe }} </h5>
             
             <br/>
@@ -50,20 +56,20 @@
               <br/>
               <br/>
               
-              <h1>Comments.......</h1>
+              <h1>Comments</h1>
             <br/>
             {% if not post.comments.all %}
-              No Comments Yet....   <a href="{% url 'add_comment' post.pk %}"><b>  Add Comment Here</b></a>
+              <b>  No Comments Here Yet. Be the first to add a comment!</b>
             {% else %}
             
               {% for comment in post.comments.all %}
-              <ul>
+              
                 <h5>
-                <li><b>{{ comment.name }}</b> -
+                <b>{{ comment.name }}</b> -
                 {{ comment.date_added }}
-                </li>
+                
                 </h5>
-              </ul>
+              
               
               <h6>
                 {{ comment.body }}
@@ -75,9 +81,17 @@
             <br/>
             <br>
             <hr>
-            <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
+            
             {% if user.is_authenticated %}
+            <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
             <button type="button" class="btn btn-primary"><a href="{% url 'add_comment' post.pk %}">Add Comment</button></a>
+            {% else %}
+            <br>
+            <br>
+            <h4>You Must Be Logged In To Comment On This Post</h4>
+            <p id="small_link"><small>Not Yet Registered? Register <a href="{% url 'register' %}"><b> Here</b></a></small></p>
+            <br>
+            <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
             {% if user.id == post.author.id %}
             <button class="btn btn-secondary" type="submit"><a href="{% url 'update_post' post.pk %}"><small>Edit Post</small></a></button>
             <button class="btn btn-danger" type="submit"><a href="{% url 'delete_post' post.pk %}"><small> Delete Post</small></a></button>

@@ -1,24 +1,29 @@
 from django.db import models
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Post, Category, Comment
 from datetime import datetime, date
 from .forms import PostForm, EditForm, CommentForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
+
 def home(request):
-    return render(request, 'home.html',{})
+    return render(request, 'home.html', {})
+
 
 def LikeView(request, pk):
     post = get_object_or_404(Post, id=request.POST.get('post_id'))
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
-        liked=False
+        liked = False
+
     else:
         post.likes.add(request.user)
-        liked=True
+        liked = True
     return HttpResponseRedirect(reverse('article-detail', args=[str(pk)]))
+
 
 class HomeView(ListView):
     model = Post
@@ -32,14 +37,21 @@ class HomeView(ListView):
         context["cat_menu"] = cat_menu
         return context
 
+
 def CategoryView(request, cats):
-    category_posts = Post.objects.filter(category=cats.replace('-',' '))
-    return render(request, 'categories.html', {'cats':cats.title().replace('-',' '), 'category_posts':category_posts})
+    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+    ordering = ['-id']
+    return render(request, 'categories.html', {'cats': cats.title().replace
+                                               ('-', ' '), 'category_posts':
+                                               category_posts})
 
 
 def CategoryListView(request):
     cat_menu_list = Category.objects.all()
-    return render(request, 'category_list.html', {'cat_menu_list':cat_menu_list})
+
+    return render(request, 'category_list.html',
+                  {'cat_menu_list': cat_menu_list})
+
 
 class ArticleDetailView(DetailView):
     model = Post
@@ -47,11 +59,12 @@ class ArticleDetailView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
-        context = super(ArticleDetailView, self).get_context_data(*args, **kwargs)
+        context = super(ArticleDetailView, self).get_context_data(
+            *args, **kwargs)
 
         like = get_object_or_404(Post, id=self.kwargs['pk'])
         total_likes = like.total_likes()
-        
+
         liked = False
         if like.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -61,23 +74,24 @@ class ArticleDetailView(DetailView):
         context["liked"] = liked
         return context
 
+
 class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
-    #fields = '__all__'
+
 
 class AddCategoryView(CreateView):
     model = Category
-    #form_class = PostForm
+
     template_name = 'add_category.html'
     fields = '__all__'
+
 
 class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
     template_name = 'update_post.html'
-    #fields = ['title', 'title_tag','body']
 
 
 class DeletePostView(DeleteView):
@@ -85,13 +99,14 @@ class DeletePostView(DeleteView):
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
 
+
 class AddCommentView(CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'add_comment.html'
+
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
         return super().form_valid(form)
 
     success_url = reverse_lazy('home')
-    

@@ -9,7 +9,7 @@
     <br>
     {% csrf_token %}
     {{ form.media }}
-    {{ form.as_p }}
+    {{ form.as_p | safe}}
     <button class="btn btn-secondary" type="submit">Post</button>
 </form>
 </div>
@@ -18,7 +18,7 @@
     var name = "{{ user.id }}";
     document.getElementById("user").value
         = name;
-
+    var resize = document.getElementById('cke_id_body').style.width ="100%";
 </script>
 
 {% endblock %}

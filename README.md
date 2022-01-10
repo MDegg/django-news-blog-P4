@@ -1,108 +1,171 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Django News
 
-Welcome MDegg,
+Django News is a News Blog Web App which can be used to Post articles of interest and to allows other users to read, comment and like each post.
+Users are able to register an account with the app and create their own profile using their name, email and choosing a unique usernam. Once registered users can login to the app to allow them to use the like and comment functionality along with add post and choose categories of interest to view blog articles within the chosen category.
+#
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+# User Stories
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+The user requires certain functionality to enable the app to work as needed.
 
-## Gitpod Reminders
+- Home Page View
+- Article Detailed View
+- Create Posts
+- Login and Logout
+- Register
+- Comments
+- Like Posts
+- Edit and Delete Posts
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Whilst thinking about the users needs each requirement is added into the user stories within github.
 
-`python3 -m http.server`
+![](static/Media/images/user_stories.JPG)
 
-A blue button should appear to click: _Make Public_,
+As the requirements are fulfilled within the app they are moved into the In Progress column.
 
-Another blue button should appear to click: _Open Browser_.
+![](static/Media/images/user_stories_in_progress.JPG)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+And finally added to the Complete column once the functionality has been completed.
 
-A blue button should appear to click: _Make Public_,
+![](static/Media/images/user_stories_complete.JPG)
 
-Another blue button should appear to click: _Open Browser_.
+# Features
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Navbar
 
-To log into the Heroku toolbelt CLI:
+The website has a multi-functional navbar that allows the user to "Add Post", "Choose Category", "Edit Profile", Login and Logout respectively.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+![](static/Media/images/navbar_user.JPG)
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+The Admin user also has an additional button "Add Category". This allows the Admin to add aditional Categories as they see fit.
 
-------
+![](static/Media/images/navbar_admin.JPG)
 
-## Release History
+If a User is not logged in the navbar shows different options "Home", "Register" and "Login".
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+![](static/Media/images/register_login_navbar.JPG)
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+## Home Page
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+The homepage is where all of the posts are shown to the user. They are added to the page showing the most recent post first. The user is able to click the "View Post" button to view the detailed version of the post.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+![](static/Media/images/homepage.JPG)
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+## Login and Register
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+The user is able to register, login and logout using the navbar navigation buttons. Each creating a new view or form to allow the user to login, logout or register.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+![](static/Media/images/register.JPG)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+![](static/Media/images/login.JPG)
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## Comment
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+Registered Users are able to comment on each post within the app but only when logged in.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+![](static/Media/images/add_new_comment.JPG)
+By clicking the Add Comment button the user is directed to the add comment form where they can create their comment and add to the existing post.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+![](static/Media/images/add_comment.JPG)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+When a user is not logged in they are unable to comment.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+![](static/Media/images/comment_not_registered.JPG)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+## Like
 
-------
+Registered Users are able to like each post within the app but only when logged in.
 
-## FAQ about the uptime script
+![](static/Media/images/like_post.JPG)
 
-**Why have you added this script?**
+When liked the number of likes are added to the number of likes view.
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+![](static/Media/images/number_of_likes.JPG)
 
-**How will this affect me?**
+The like button also chnages colour to Red and allows the user to press again to Unlike.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+## Post
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+Registered Users are able to create their own posts within the app but only when logged in. They can do this from the Add Post button within the navbar
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+![](static/Media/images/navbar_user.JPG)
 
-**So….?**
+The user is directed to the Add Post form where they can create their Blog Post. There are 5 sections to the form.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+Title - a text field to allow user text input.
+Title Tag - a text field to allow user text input.
+Category - a dropdown menu to allow the user to choose which category they wish their post to sit within.
+Body - Text Editor to allow text input
+Image - Allows for user to upload images to their posts
 
-**Can I opt out?**
+![](static/Media/images/add_post_form.JPG)
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+The form uses a Text Editor to provide the user with a better UX and also allows for different fonts, Bold Text, Italic Text etc.
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+![](static/Media/images/text_editor.JPG)
 
-**Anything more?**
+Once the Post has been created the user clicks the "Post" button to upload their post to the home page of the web app.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+## Date
 
----
+Each post is automatically stamped with the date of when the posts were uploaded.
 
-Happy coding!
+![](static/Media/images/post_view_home.JPG)
+
+## Edit and Delete Post
+
+Registered Users are able to edit or delete their own posts within the app but only when logged in.
+
+![](static/Media/images/edit_delete_post.JPG)
+
+When a user is not registered or logged in they are not shown the "Edit Post" or "Delete Post" buttons.
+
+![](static/Media/images/delete_post_logged_out.JPG)
+
+#
+
+## Testing
+
+- explain testing procedures
+  #
+
+## Validation
+
+All of the python code has beenm PEP8 validated using Pythons built in auto validate function and then checked in the PEP8 validator online. Where some of the validation was showing as "line too long" i was unable to rectify without causing bugs within the code. MOdels and Views shown below...
+
+![](static/Media/images/models_pep8.JPG)
+![](static/Media/images/views_pep8.JPG)
+
+#
+
+## Bugs
+
+- Mixed up url.py files and settings.py files. This was realised after finding an error within the admin site. Deleted all associated files and started from scratch.
+  #
+
+## Deployment
+
+- The site was deployed to GitHub pages. The steps to deploy are as follows:
+- Heroku early deployment etc.
+  #
+
+## Credits
+
+- [YouTube](https://www.youtube.com/) - Walkthrough videos and Django tutorials.
+- [Code Institute](https://learn.codeinstitute.net/) - Django Cheatsheet
+
+## Content
+
+- The text for the Article Details were taken from Wikipedia, The Great Outdoor Magazine, Everything Camping, MCN, Code Magazine,
+- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+- [Google Fonts](https://fonts.google.com/)
+
+### Media
+
+- The photos used on the home and sign up page are from Google Images
+
+#
+
+## Images
+
+- ![Footer](reference path for required images)

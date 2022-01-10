@@ -2,34 +2,26 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card mb-12" >
-                <div class="card-body" id="card-body">
-                    <p>Api To Go Here</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  
     <br>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" >
         {% for post in post_list %}
-        <div class="col-md-4" id="card-body">
-        <div class="card mb-4" >
+        <div class="col-md-4"   >
+        <div class="card mb-4" id="card-body">
             <div class="card-body" id="card-body">
                 <div class="image-container" >
                     {% if "placeholder" in post.feature_image.url %}
-                    <img class="card-img-top"
+                    <img class="card-img-top" id="home-detail-img"
                         src="https://miro.medium.com/max/1080/1*u_24K65JdndkKbC2ZEGvNA.png">
                     {% else %}
-                    <img class="card-img-top" src=" {{ post.feature_image.url }}">
+                    <img class="card-img-top" id="home-detail-img" src=" {{ post.feature_image.url }}">
                     {% endif %}
-                    <div class= "row">
+                    <div class= "row" >
                         <!--<a id="object-title" href="{% url 'article-detail' post.pk %}" class="post-link">-->
                         <h3  class="card-title card-body " id="card-body">{{ post.title }}</h3>
                         </a>
-                        <p>{{ post.body | slice:"250" | safe }}</p>
+                        <!--<p>{{ post.body | slice:"220" | safe }}</p>-->
                         
                         <div class="image-flash">
                             <hr>
@@ -44,7 +36,7 @@
                         </div>
                      </div>
                 
-                <a href="{% url 'article-detail' post.pk %}" class="btn btn-secondary mt-5">View Post!</a>
+                <a href="{% url 'article-detail' post.pk %}" class="btn btn-secondary mt-5" id="button-color">View Post!</a>
             </div>
         </div> 
     </div>
