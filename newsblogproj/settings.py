@@ -19,23 +19,26 @@ if os.path.isfile("env.py"):
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-an1n7crw2pejea^j8@h-wz5if490wqb2zq_ci5&vg8$)7+qm)a'
+# SECRET_KEY = 'django-insecure-an1n7crw2pejea^j8@h-wz5if490wqb2zq_ci5&vg8$)7+qm)a'
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["news-blog-app-p4.herokuapp.com","localhost","https://8000-pink-cephalopod-bl9d2mx9.ws-eu25.gitpod.io"]
 
-CSRF_TRUSTED_ORIGINS=['https://8000-pink-cephalopod-bl9d2mx9.ws-eu25.gitpod.io']
+
+ALLOWED_HOSTS = ["news-blog-app-p4.herokuapp.com", "localhost", "https://8000-pink-cephalopod-bl9d2mx9.ws-eu25.gitpod.io"]
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-pink-cephalopod-bl9d2mx9.ws-eu27.gitpod.io']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -89,12 +92,12 @@ WSGI_APPLICATION = 'newsblogproj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+# DATABASES = {
+#   'default': {
+#   'ENGINE': 'django.db.backends.sqlite3',
+#   'NAME': BASE_DIR / 'db.sqlite3',
+# }
+# }
 
 DATABASES = {
     'default':
@@ -138,9 +141,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL ='/media/'
+MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
@@ -150,3 +153,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+USER = 'django'

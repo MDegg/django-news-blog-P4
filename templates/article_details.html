@@ -1,103 +1,86 @@
 {% extends 'base.html' %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-
+<br>
 <div class="col-md-12">
-    <div class="card mb-8" >
-        <div class="card-body" id="card-body">
-            <h1>{{ post.title }}</h1>
-            <small>By: {{ post.author }}</small></br>
-            <hr>
-            {% if "placeholder" in post.feature_image.url %}
-            <img class="card-img-top" id="detail_img"
-                src="https://miro.medium.com/max/1080/1*u_24K65JdndkKbC2ZEGvNA.png">
-            {% else %}
-            <img class="card-img-top" id="detail_img" src=" {{ post.feature_image.url }}">
-            {% endif %}
-            
-            <h5> {{ post.body | safe }} </h5>
-            
-            <br/>
-            <br/>
-            <hr>
-            <br/>
-            {% if user.is_authenticated %}
-            <form action="{% url 'like_post' post.pk %}" method = "POST">
-                {% csrf_token %}
-
-                {% if liked %}
-                <button class="btn-outline-danger btn-sm" type="submit" name="post_id" value="{{ post.id }}">Unlike Post</button> 
-                {% else %}
-                <button class="btn-outline-primary btn-sm" type="submit" name="post_id" value="{{ post.id }}">Like Post</button>
-                {% endif %}
-                - {{ total_likes }} Likes
-            </form>
-            {% else %}
-            <small> You Must <b><a href="{% url 'login' %}">Login</a> </b>to Like This Post</small>
-            {% endif %}
-            <br/>
-            <br/>
-            <div class="">
-                <div class="">
-                  <div class="">
-                    <!--<img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" alt="User Profile Pic">-->
-                  </div>
-                  <div class="col-md-4">
-                    <div class="card-body">
-                      <h5 class="card-title">Post By: {{ post.author }}</h5>
-                      <!--<p class="card-text">{{ post.author.profile.bio | safe}}</p>-->
-                      <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <hr>
-              <br/>
-              <br/>
-              
-              <h1>Comments</h1>
-            <br/>
-            {% if not post.comments.all %}
-              <b>  No Comments Here Yet. Be the first to add a comment!</b>
-            {% else %}
-            
-              {% for comment in post.comments.all %}
-              
-                <h5>
-                <b>{{ comment.name }}</b> -
-                {{ comment.date_added }}
-                
-                </h5>
-              
-              
-              <h6>
-                {{ comment.body }}
-                <br>
-                <br>
-              </h6>
-                {% endfor %}
-            {% endif %}
-            <br/>
-            <br>
-            <hr>
-            
-            {% if user.is_authenticated %}
-            <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
-            <button type="button" class="btn btn-primary"><a href="{% url 'add_comment' post.pk %}">Add Comment</button></a>
-            {% else %}
-            <br>
-            <br>
-            <h4>You Must Be Logged In To Comment On This Post</h4>
-            <p id="small_link"><small>Not Yet Registered? Register <a href="{% url 'register' %}"><b> Here</b></a></small></p>
-            <br>
-            <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
-            {% if user.id == post.author.id %}
-            <button class="btn btn-secondary" type="submit"><a href="{% url 'update_post' post.pk %}"><small>Edit Post</small></a></button>
-            <button class="btn btn-danger" type="submit"><a href="{% url 'delete_post' post.pk %}"><small> Delete Post</small></a></button>
-            {% endif %}
-            {% endif %}
-        </div>
+  <div class="card mb-8">
+    <div class="card-body" id="card-body">
+      <h1>{{ post.title }}</h1>
+      <small>By: {{ post.author }}</small>
+      </br>
+      <hr> {% if "placeholder" in post.feature_image.url %} 
+      <img class="card-img-top" id="detail_img" src="https://miro.medium.com/max/1080/1*u_24K65JdndkKbC2ZEGvNA.png"> 
+      {% else %} 
+      <img class="card-img-top" id="detail_img" src=" {{ post.feature_image.url }}"> 
+      {% endif %} 
+      <h5> {{ post.body | safe }} </h5>
+      <br />
+      <h6 class="card-title">Post By: {{ post.author }}</h6>
+      <br />
+      <hr>
+      <br /> 
+      {% if user.is_authenticated %} 
+      <form action="{% url 'like_post' post.pk %}" method="POST"> 
+        {% csrf_token %} 
+        {% if liked %} 
+        <button class="btn-outline-danger btn-sm" type="submit" name="post_id" value="{{ post.id }}">Unlike Post</button> 
+        {% else %} 
+        <button class="btn-outline-primary btn-sm" type="submit" name="post_id" value="{{ post.id }}">Like Post</button> 
+        {% endif %} 
+        - {{ total_likes }} Likes </form> 
+        {% else %} 
+        <small> You Must <b><a href="{% url 'login' %}">Login</a></b> to Like This Post </small> {% endif %} 
+      <br/>
+      <hr>
+      <hr>
+      <br />
+      <h1>Comments</h1>
+      <br/> 
+      {% if not post.comments.all %} 
+      <b> No Comments Here Yet. Be the first to add a comment!</b> 
+      {% else %} 
+      {% for comment in post.comments.all %} 
+      <h5>
+        <b>{{ comment.name }}</b> - {{ comment.date_added }}
+      </h5>
+      <h6>
+        {{ comment.body }}
+        <br>
+        <br>
+      </h6> {% endfor %} {% endif %} <br />
+      <br>
+      <hr> {% if user.is_authenticated %} <button class="btn btn-secondary" type="submit">
+        <a href="{% url 'home' %}">Back</a>
+      </button>
+      <button type="button" class="btn btn-primary">
+        <a href="{% url 'add_comment' post.pk %}">Add Comment </button>
+          <br>
+          <br>
+      </a> {% if user.id == post.author.id %} <button class="btn btn-secondary" type="submit">
+        <a href="{% url 'update_post' post.pk %}">
+          <small>Edit Post</small>
+        </a>
+      </button>
+      <button class="btn btn-danger" type="submit">
+        <a href="{% url 'delete_post' post.pk %}">
+          <small> Delete Post</small>
+        </a>
+      </button> {% endif %} {% else %} <br>
+      <br>
+      <h4>You Must Be Logged In To Comment On This Post</h4>
+      <p id="small_link">
+        <br>
+        <hr>
+        <small>Not Yet Registered? Register <a href="{% url 'register' %}">
+            <b> Here</b>
+          </a>
+        </small>
+      </p>
+      <br>
+      <button class="btn btn-secondary" type="submit">
+        <a href="{% url 'home' %}">Back</a>
+      </button> {% endif %}
     </div>
+  </div>
 </div>
 {% endblock %}

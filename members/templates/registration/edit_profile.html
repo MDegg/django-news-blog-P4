@@ -10,7 +10,6 @@
 <div class="form-control">
 <form method="POST">
     <br>
-    User Bio: {{ user.profile.bio | safe }}
     {% csrf_token %}
     {{ form.as_p | safe }}
     

@@ -1,14 +1,27 @@
 # Django News
+![](static/Media/images/home-view.JPG)
 
 Django News is a News Blog Web App which can be used to Post articles of interest and to allows other users to read, comment and like each post.
 Users are able to register an account with the app and create their own profile using their name, email and choosing a unique usernam. Once registered users can login to the app to allow them to use the like and comment functionality along with add post and choose categories of interest to view blog articles within the chosen category.
+#
+
+# Table Of Contents
+
+1.  User Stories
+2.  Design
+3.  Features  
+5.  Future Features
+6.  Testing
+7.  Validation
+0.  Technologies Used
+8.  Bugs 
+
 #
 
 # User Stories
 
 The user requires certain functionality to enable the app to work as needed.
 
-- Home Page View
 - Article Detailed View
 - Create Posts
 - Login and Logout
@@ -28,6 +41,16 @@ As the requirements are fulfilled within the app they are moved into the In Prog
 And finally added to the Complete column once the functionality has been completed.
 
 ![](static/Media/images/user_stories_complete.JPG)
+
+# Design 
+
+## Colours 
+
+The main body color for the project is rgb(248, 248, 236). I chose this colour as I wanted a plain, light colour scheme but found that white was too bland and decided an off white/yellow color worked well with the grey navbar and navigation links and buttons throughout the web app.
+
+## Fonts
+
+I kept the fonts to the Bootstrap standard "Helvetica Neue" as I found that this is an easy to read font. I used "Pacifico" for the logo to give it some style in orderf or it to stand out.
 
 # Features
 
@@ -122,50 +145,183 @@ When a user is not registered or logged in they are not shown the "Edit Post" or
 
 ![](static/Media/images/delete_post_logged_out.JPG)
 
+## Categories
+
+Each post is given a category by choosing from the scroll down menu when creating a post. Each post is then added to the corresponding category list enabling the user to choose a category and view all posts within.
+
+![](static/Media/images/blog_categories.JPG)
+
+There is also a dropdown menu within the navbar to allow the user to choose a category to view from the homepage.
+
+![](static/Media/images/categories_dropdown.JPG)
+
+## Edit Profile
+
+Users are able to change their username, email and password from the "Edit Profile" page. 
+
+![](static/Media/images/edit_profile.JPG)
+
+the "Change Password" button takes the user to a new form where they are able to change their password.
+
+![](static/Media/images/change_password.JPG)
+
+# 
+
+## Future Features
+
+- Profile page to include bio and profile picture.
+- Comments to automatically populate the username instead of adding name to form.
+
 #
 
 ## Testing
 
-- explain testing procedures
-  #
+- Throughout the development of the application I would test each View, Model and URL together after each one had been written. 
+- After migrating any models I would run the server whilst writing the code for the views and urls and watch the terminal show up any errors whilst writing the code. This would enable me to generally notice an issue in real time.
+- Once the URL's were written and implemented as links within the app I would test each one to ensure that they worked correctly and directed me to the required page.
+- The links were again tested in the final stages of development.
+- Forms were also tested in the final stages to ensure that hey work as should. I registered multiple accounts and then deleted to ensure that this functionality works as it should. All error messages displayed and user information displayed as should also.
+- Additional manual testing of the finished app included using dev tools to render the webpages within a mobile phone screen. Due to using bootstrap this functionality is automatic meaning less coding for different viewports.
 
-## Validation
+![](static/Media/images/mobile_view.JPG)
 
-All of the python code has beenm PEP8 validated using Pythons built in auto validate function and then checked in the PEP8 validator online. Where some of the validation was showing as "line too long" i was unable to rectify without causing bugs within the code. MOdels and Views shown below...
+## Compatibility Testing
+
+Once the website was complete it was tested on Google Chrome using dev tools and also a samsung mobile phone and tablet.
+The website displayed as it should on all devices each of a different size.
+
+## Performance Testing
+
+I used the Lighthouse performance tool in dev tools to test the performance of the webpages...
+
+- ### Home Page View
+
+![](static/Media/images/lighthouse-test.JPG)
+
+- ### Article Detail Page 
+
+![](static/Media/images/article-lighthouse-test.JPG)
+
+- ### Add Comment Page 
+
+![](static/Media/images/add-comment-lighthouse-test.JPG)
+
+#
+
+# Validation
+
+## PEP8   
+
+All of the python code has beenm PEP8 validated using Pythons built in auto validate function and then checked in the PEP8 validator online. Where some of the validation was showing as "line too long" I was unable to rectify without causing bugs within the code. Models and Views shown below...
 
 ![](static/Media/images/models_pep8.JPG)
 ![](static/Media/images/views_pep8.JPG)
 
+## CSS
+
+W3C CSS Validator was used to validate the CSS file. No errors were found.
+
+![](static/Media/images/css_validate.JPG)
+
+## HTML
+
+W3C Markup Validation Service was used to validate all HTML files. There were some issues with the Python url's and syntax which meant that some code could only be checked and then tidied up manually.
+
+## JavaScript
+
+JavaScript was not checked for validation due to being only small snippets.
+
 #
 
-## Bugs
+# Technologies Used
 
-- Mixed up url.py files and settings.py files. This was realised after finding an error within the admin site. Deleted all associated files and started from scratch.
+## Languages
+
+
+- HTML, CSS, Python, Django and Javascript
+
+## Database Framework
+
+
+- Postgres
+
+## Gitpod
+
+
+- I used the GitPod Environment to create my workspace to allow me to add, commit and push to GitHub.
+
+## Bootstrap
+
+- I used Bootstrap to make responsive design much easier due to their "mobile first" design.
+
+## Cloudinary
+
+- Cloudinary was used to store all images uploaded to the website.
+
+# Bugs
+
+ Some bugs were noticed during the development stage. 
+
+- CSRF Token - Trusted Origin Failure
+
+![](static/Media/images/trusted-origin-csrf-token-failure.JPG)
+
+ Fix: I added the Web Page url to the CSRF_TRUSTED_ORIGINS within Settings.py to rectify this issue.
+
+![](static/Media/images/trusted-origin-fix.JPG)
+
+- Homepage View could not be found
+
+Fix: Changed url by adding ' '/ to initial path.
+
+
+#
+
+# Deployment
+
+The project was deployed to GitHub and pushed throughout the devlopment process. The project was also deployed to Heroku in the early stages of development to ensure that there weren't any issues later on in the project.
+Auto deploy was selected within Heroku to ensure that each push from GitHub would push and deploy to Heroku.
+
+## Method of Deployment
+
+- In Heroku create new app 
+- Added database to app using "Heroku Postgres"
+- Set environment variables in env.py, "DATABASE_URL" and "SECRET_KEY"
+- Copy DATABASE_URL to Settings.py
+- Copy SECRET_KEY to Settings.py
+- Migrate Changes
+
+
   #
 
-## Deployment
-
-- The site was deployed to GitHub pages. The steps to deploy are as follows:
-- Heroku early deployment etc.
-  #
-
-## Credits
+# Credits
 
 - [YouTube](https://www.youtube.com/) - Walkthrough videos and Django tutorials.
 - [Code Institute](https://learn.codeinstitute.net/) - Django Cheatsheet
+- [Font Awesome](https://fontawesome.com/) - Icons Used Within App
+- [Google Fonts](https://fonts.google.com/) - Fonts Used Within App
+- [Bootstrap](https://getbootstrap.com) 
+- [Cloudinary](https://cloudinary.com)
+- [Postgres](https://aiven.io/postgresql)
+- [Heroku](https://www.heroku.com) 
 
-## Content
+
+
+# Content
 
 - The text for the Article Details were taken from Wikipedia, The Great Outdoor Magazine, Everything Camping, MCN, Code Magazine,
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
-- [Google Fonts](https://fonts.google.com/)
+- The icons in the footer were taken from 
 
-### Media
+
+# Media
 
 - The photos used on the home and sign up page are from Google Images
 
-#
+# Acknowledgements
 
-## Images
+- Akshat Garg for mentor support
+- Code Institute Tutor Support
 
-- ![Footer](reference path for required images)
+
+
+

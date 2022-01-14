@@ -3,16 +3,15 @@
 {% block content %}
 
 
-<h1>Add Comment......</h1>
+<h1>Add Comment</h1>
 <div class="form-control">
-<form method="POST" >
-    <br>
-    {% csrf_token %}
-    
-    {{ form.as_p }}
+  <form method="POST">
+    <br> {% csrf_token %} {{ form.as_p }}
     <button class="btn btn-secondary" type="submit">Add Comment</button>
-    <button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Home</a></button>
-</form>
+    <button class="btn btn-secondary" type="submit">
+      <a href="{% url 'home' %}">Home</a>
+    </button>
+  </form>
 </div>
 
 

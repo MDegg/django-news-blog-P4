@@ -3,22 +3,17 @@
 {% block content %}
 
 
-<h1>Add Post......</h1>
+<h1>Add Post</h1>
 <div class="form-control">
-<form method="POST" enctype="multipart/form-data">
-    <br>
-    {% csrf_token %}
-    {{ form.media }}
+  <form method="POST" enctype="multipart/form-data">
+    <br> {% csrf_token %} {{ form.media }}
     {{ form.as_p | safe}}
     <button class="btn btn-secondary" type="submit">Post</button>
-</form>
+  </form>
 </div>
-
 <script>
-    var name = "{{ user.id }}";
-    document.getElementById("user").value
-        = name;
-    var resize = document.getElementById('cke_id_body').style.width ="100%";
+  var name = "{{ user.id }}";
+  document.getElementById("user").value = name;
 </script>
 
 {% endblock %}

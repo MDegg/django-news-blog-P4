@@ -3,17 +3,15 @@
 {% block content %}
 
 <h1>Blog Categories</h1>
-<br><br>
-{% for item in cat_menu_list %}
-<div class="col-md-4">
-    <div class="card mb-4" >
-        <div class="card-body" id="card-body">
-    <a  href="{% url 'category' item %}">{{ item }}</a>
-</div>
+<br>
+<br> {% for item in cat_menu_list %} <div class="col-md-4">
+  <div class="card mb-4">
+    <div class="card-body" id="card-body">
+      <a href="{% url 'category' item %}" id="cat_item">{{ item }}</a>
     </div>
-        </div>
-        <br>
-        
-{% endfor %}
-<button class="btn btn-secondary" type="submit"><a href="{% url 'home' %}">Back</a></button>
+  </div>
+</div>
+<br> {% endfor %} <button class="btn btn-secondary" type="submit">
+  <a href="{% url 'home' %}">Back</a>
+</button>
 {% endblock %}
