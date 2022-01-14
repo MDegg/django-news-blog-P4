@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 ALLOWED_HOSTS = ["news-blog-app-p4.herokuapp.com", "localhost", "https://8000-pink-cephalopod-bl9d2mx9.ws-eu25.gitpod.io"]
 
