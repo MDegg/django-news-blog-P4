@@ -291,6 +291,10 @@ Auto deploy was selected within Heroku to ensure that each push from GitHub woul
 - Copy SECRET_KEY to Settings.py
 - Migrate Changes
 
+## Final Deployment
+
+- First DEBUG is set to False within Settings.py
+- 
 
   #
 
