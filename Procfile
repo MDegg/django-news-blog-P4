@@ -1,1 +1,1 @@
-web: gunicorn newsblogproj.wsgi
+web: gunicorn newsblogproj.wsgi:application
