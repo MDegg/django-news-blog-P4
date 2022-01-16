@@ -82,17 +82,6 @@
         </div>
       </nav>
     <br>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 offset-md-2">
-          {% for message in messages %}
-          <div class="alert {{message.tags}} alert-dismissable fade show" id="msg" role="alert">
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          </button>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
     <div class="logo">
     <a href="{% url 'home' %}"><h1 class="col-md-4" id="logo">Django News!</h1></a>
     </div>
