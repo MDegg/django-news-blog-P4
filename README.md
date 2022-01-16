@@ -274,6 +274,12 @@ JavaScript was not checked for validation due to being only small snippets.
 
 Fix: Changed url by adding ' '/ to initial path.
 
+- Additional bugs noticed on final deployment to Heroku.
+
+![](static/Media/images/heroku-fail.JPG)
+
+Fix: Changed order of app installed in Settings.py
+
 
 #
 
