@@ -7,6 +7,7 @@ from datetime import datetime, date
 from .forms import PostForm, EditForm, CommentForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 
 def home(request):

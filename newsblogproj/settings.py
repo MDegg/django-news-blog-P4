@@ -56,8 +56,9 @@ INSTALLED_APPS = [
     'newsapp',
     'members',
     'ckeditor',
-    
 ]
+
+SITE_ID = 1
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alrt-info',
